@@ -10,8 +10,8 @@ const Contact = () => {
           or Managed Runtime Environment (MRE), runs as a normal application
           inside a host OS and supports a single process
         </p>
-        <form className='contact-form'>
-          <input type='email' className='form-input' placeholder='enter email' />
+        <form className='contact-form' action="https://formspree.io/f/xzblezav" method="POST">
+          <input type='email' className='form-input' placeholder='enter email' name='_replyto'/>
           <button type='submit' className='submit-btn'>subscribe</button>
         </form>
       </div>
