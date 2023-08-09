@@ -53,7 +53,6 @@ console.log(colors);
                 name='color'
                 style={{ background: c }}
                 className={`${color === c ? 'color-btn active' : 'color-btn'}`}
-                
                 data-color={c}
               >
                 {color === c ? <FaCheck/> : null}
