@@ -15,10 +15,10 @@ const Filters = () => {
   const categories = getUniqueValues(all_products, 'category')
   const companies = getUniqueValues(all_products, 'company')
   const colors = getUniqueValues(all_products, 'colors')
-
+console.log(colors);
   return <Wrapper>
     <div className='content'>
-      <form onSubmit={(e) => e.preventDefault}>
+      <form onSubmit={(e)=>e.preventDefault}>
         <div className='form-control'>
           <input type='text' name='text' placeholder='search' className='search-input' value={text} onChange={updateFilters}/>
         </div>
@@ -38,6 +38,27 @@ const Filters = () => {
               return <option key={index} value={c}>{ c }</option>
             })}
           </select>
+        </div>
+        <div className='form-control'>
+          <h5>Colors</h5>
+          <div className='colors'>
+            {colors.map((c, index) => {
+              if (c === "all") {
+                return <button name='color' onClick={updateFilters} data-color='all' className={`${color === 'all' ? 'all-btn active' : 'all-btn'}`} key={index}>
+                  all</button>
+              }
+              return <button
+                key={index}
+                name='color'
+                style={{ background: c }}
+                className={`${color === c ? 'color-btn active' : 'color-btn'}`}
+                onClick={updateFilters}
+                data-color={c}
+              >
+                {color === c ? <FaCheck/> : null}
+              </button>
+            })}
+          </div>
         </div>
       </form>
     </div>
