@@ -22,6 +22,15 @@ const Filters = () => {
         <div className='form-control'>
           <input type='text' name='text' placeholder='search' className='search-input' value={text} onChange={updateFilters}/>
         </div>
+        <div className='form-control'>
+          <h5>Category</h5>
+          <div>
+            {categories.map((c, index) => {
+              return <button key={index} onClick={updateFilters} name='category' type='button' className={`${category === c.toLowerCase()? 'active' : null}`}>
+                {c}</button>
+            })}
+          </div>
+        </div>
       </form>
     </div>
   </Wrapper>
