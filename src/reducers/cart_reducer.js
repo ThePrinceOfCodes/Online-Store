@@ -26,7 +26,7 @@ const cart_reducer = (state, action) => {
          }
       })
 
-      return { ...state, cart: [...state.cart, tempItem]}
+      return { ...state, cart: tempCart}
       
     } else {
       const newItem = {
