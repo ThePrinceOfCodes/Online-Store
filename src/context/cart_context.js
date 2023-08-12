@@ -12,11 +12,12 @@ const getLocalStorage = () => {
   let cart = localStorage.getItem('cart');
 
   console.log(cart);
-  
-  if (cart !== undefined) {
-    return JSON.parse(cart)
+
+  if (!cart) {
+     return []
   }
-  return []
+  
+ return JSON.parse(cart)
 }
 
 const initialState = {
