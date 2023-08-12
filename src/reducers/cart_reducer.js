@@ -44,7 +44,7 @@ const cart_reducer = (state, action) => {
   }
 
   if (action.type === CLEAR_CART) {
-    
+    return { ...state, cart: [] }
   }
 
   if (action.type === REMOVE_CART_ITEM) {
