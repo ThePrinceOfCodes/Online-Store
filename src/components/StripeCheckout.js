@@ -13,14 +13,30 @@ import { useUserContext } from '../context/user_context'
 import { formatPrice } from '../utils/helpers'
 import { useHistory } from 'react-router-dom'
 
+const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
+
 const CheckoutForm = () => {
+  const { cart_reducer, total_amount, shipping_fee, clearCart } = useCartContext()
+  const { myUser } = useUserContext()
+  const history = useHistory()
+  const [succeeded, setSucceeded] = useState(false)
+  const [error, setError] = useState(null)
+  const [processing, setProcessing] = useState('')
+  const [disabled, setDisabled] = useState(true)
+  const [clientSecret, setClientSecret] = useState('')
+  const stripe = useState()
+  const elements = useElements()
+
+
   return <h4>hello from Stripe Checkout </h4>
 }
 
 const StripeCheckout = () => {
   return (
     <Wrapper>
-      <CheckoutForm />
+      <Elements stripe={promise}>
+        <CheckoutForm />
+      </Elements>
     </Wrapper>
   )
 }
