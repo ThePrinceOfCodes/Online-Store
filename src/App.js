@@ -10,12 +10,12 @@ function App() {
         <Navbar />
         <Sidebar />
         <Routes>
-          <Route exact path='/' element={<Home/>} />
-          <Route exact path='/about' element={ <About/>}/>
-          <Route exact path='/cart' element={ <Cart/>} />
-          <Route exact path='/products' element={<Products/>} />
-          <Route exact path='/products/:id' children={<SingleProduct />} />
-          <Route exact path='/checkout' children={
+          <Route path='/' element={<Home/>} />
+          <Route path='/about' element={ <About/>}/>
+          <Route path='/cart' element={ <Cart/>} />
+          <Route path='/products' element={<Products/>} />
+          <Route path='/products/:id' element={<SingleProduct />} />
+          <Route path='/checkout' element={
             <PrivateRoute >
               <Checkout/>
             </PrivateRoute>
