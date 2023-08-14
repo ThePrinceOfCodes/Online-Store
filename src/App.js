@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
 import { Home,SingleProduct,Cart, Checkout, Error, About,Products, PrivateRoute, AuthWrapper } from './pages'
 
@@ -9,27 +9,19 @@ function App() {
       <Router>
         <Navbar />
         <Sidebar />
-        <Switch>
-          <Route exact path='/'>
-              <Home/>
-          </Route>
-          <Route exact path='/about'>
-              <About/>
-          </Route>
-          <Route exact path='/cart'>
-              <Cart/>
-          </Route>
-          <Route exact path='/products'>
-              <Products/>
-          </Route>
-          <Route exact path='/products/:id' children={<SingleProduct/>} />
-          <PrivateRoute exact path='/checkout'>
+        <Routes>
+          <Route exact path='/' element={<Home/>} />
+          <Route exact path='/about' element={ <About/>}/>
+          <Route exact path='/cart' element={ <Cart/>} />
+          <Route exact path='/products' element={<Products/>} />
+          <Route exact path='/products/:id' children={<SingleProduct />} />
+          <Route exact path='/checkout' children={
+            <PrivateRoute >
               <Checkout/>
-          </PrivateRoute>
-          <Route path="*">
-              <Error />
-          </Route>
-        </Switch>
+            </PrivateRoute>
+          } />
+          <Route path="*" element={<Error />} /> 
+        </Routes>
         <Footer />
       </Router>
     </AuthWrapper>  
