@@ -16,7 +16,7 @@ import { useHistory } from 'react-router-dom'
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
 
 const CheckoutForm = () => {
-  const { cart_reducer, total_amount, shipping_fee, clearCart } = useCartContext()
+  const { cart_reducer, total_amount, shipping_fee, clearCart, cart } = useCartContext()
   const { myUser } = useUserContext()
   const history = useHistory()
   const [succeeded, setSucceeded] = useState(false)
@@ -51,7 +51,7 @@ const CheckoutForm = () => {
         JSON.stringify({ cart, shipping_fee, total_amount }))
 
     } catch (error) {
-      
+      console.log(error.response);
     }
   }
 
