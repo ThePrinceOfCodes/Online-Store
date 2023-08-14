@@ -27,8 +27,58 @@ const CheckoutForm = () => {
   const stripe = useState()
   const elements = useElements()
 
+  const cardStyle = {
+    style: {
+      base: {
+        color: '#32325d',
+        fontFamily: 'Ariel, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#32325d'
+        },
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+      }
+    }
+  }
 
-  return <h4>hello from Stripe Checkout </h4>
+  const createPaymentIntent = async (event) => {
+    
+  }
+
+  useEffect(() => {
+    createPaymentIntent()
+  }, [])
+
+  const handleChange = async (event) => {
+
+  }
+
+  const handleSubmit = async (ev) => {
+    
+  }
+  
+  return <div>
+    <form id='payment-form' onSubmit={handleSubmit}>
+      <CardElement id='card-element' options={cardStyle} onChange={handleChange} />
+      <button disabled={processing || succeeded || disabled} id='submit'> <span id='button-text'>
+        {processing ? <div className='spinner' id='spinner'></div> : 'pay'}
+      </span></button>
+      {/* error */}
+      {error && <div className='card-error' role='alert'>{error}</div>}
+      {/* success message */}
+      <p className={succeeded ? 'result-message' : 'result-message hidden'}>
+        payment succeeded, see the result in your 
+        <a href={`https://dashboard.stripe.com/test/payments`}>
+            stripe dashboard
+        </a>
+        Refresh the page to pay again
+      </p>
+    </form>
+  </div>
 }
 
 const StripeCheckout = () => {
